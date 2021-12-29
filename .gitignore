@@ -1,0 +1,54 @@
+﻿# OSX
+# ---------------------------------------------
+.DS_Store
+Thumbs.db
+$RECYCLE.BIN/
+
+
+
+
+
+# node.js
+# ---------------------------------------------
+node_modules/
+npm-debug.log
+yarn-error.log
+
+
+
+# Visual Studio
+# ---------------------------------------------
+.vscode/
+.vs/
+obj/
+*.pdb
+*.cloudf
+Arsiv/
+Dokumanlar/
+_Proje/packages/
+_Proje/Entities/bin/
+_Proje/Business/bin/
+_Proje/Admin/bin/
+
+
+
+
+
+
+# Genel
+# ---------------------------------------------
+*.rar
+*.zip
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+npm-debug.log*
+
+
+
+
