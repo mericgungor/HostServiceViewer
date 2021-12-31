@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+   mongodb:
+     image: mericgungor/host-service-viewer-mongodb:21.12.31.1915
+     container_name: mongodb
+     restart: always
+     ports:
+        - 27017:27017
+     volumes:
+        - mongodb-volume:/data/db
+     networks:
+        - mongonet
+  
+   webapi:
+    image: mericgungor/host-service-viewer-webapi:21.12.31.1915
+    container_name: webapi
+    restart: always
+    depends_on:
+       - mongodb
+    ports:
+        - 8081:80
+    networks:
+        - mongonet
+
+  
+   mvcwebapp:
+    image: mericgungor/host-service-viewer-mvcwebapp:21.12.31.2015
+    container_name: mvcwebapp
+    restart: always
+    depends_on:
+       - webapi
+    ports:
+        - 80:80
+    networks:
+        - mongonet
+
+
+volumes:
+    mongodb-volume:
+
+networks:
+    mongonet:
+        driver: bridge
