@@ -24,6 +24,7 @@ obj/
 *.pdb
 *.cloudf
 Arsiv/
+Dokumanlar/
 bin/
 Properties/
 _Proje/packages/

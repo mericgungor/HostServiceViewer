@@ -25,6 +25,7 @@ obj/
 *.cloudf
 Arsiv/
 bin/
+Properties/
 _Proje/packages/
 _Proje/Entities/bin/
 _Proje/Business/bin/
