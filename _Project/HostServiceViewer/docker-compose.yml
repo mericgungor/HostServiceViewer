@@ -1,0 +1,47 @@
+version: '3.4'
+
+services:
+   mongodb:
+     image: mongo
+     container_name: mongodb
+     ports:
+        - 27017:27017
+     volumes:
+        - mongodb-volume:/data/db
+     networks:
+        - mongonet
+  
+   webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    container_name: webapi
+    depends_on:
+       - mongodb
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile
+    ports:
+        - 8081:80
+    networks:
+        - mongonet
+
+  
+   MvcWebApp:
+    image: ${DOCKER_REGISTRY-}mvcwebapp
+    container_name: mvcwebapp
+    depends_on:
+       - webapi
+    build:
+      context: .
+      dockerfile: MvcWebApp/Dockerfile
+    ports:
+        - 80:80
+    networks:
+        - mongonet
+
+
+volumes:
+    mongodb-volume:
+
+networks:
+    mongonet:
+        driver: bridge

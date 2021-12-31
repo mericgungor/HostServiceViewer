@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    body {
+        background-color: #DDD;
+    }
+
+    table {
+        background-color: #fff;
+    }
+</style>
+
+<table id="tblForm" class="table table-striped table-bordered mt-3">
+    <thead>
+        <tr>
+            <th colspan="2">Servis Bilgileri</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <tr>
+            <td>Ad</td>
+            <td>
+                <input id="txtName" type="text" class="form-control" />
+                <input id="hdMongoDbId" type="hidden"  value="" />
+            </td>
+        </tr>
+        <tr>
+            <td>Açıklama</td>
+            <td><input id="txtDescription" type="text" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Servis</td>
+            <td>
+                <select id="ddlType" class="form-control" onchange="ddlTypeOnChange()">
+                    <option value="">Seçiniz</option>
+                    <option value="ping">ping</option>
+@*                    <option value="telnet">telnet</option>*@
+                    <option value="page">page</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tr-ip tr-telnet tr-service" style="display:none">
+            <td>Ip</td>
+            <td><input id="txtIp" type="text" class="form-control" /></td>
+        </tr>
+        <tr class="tr-telnet tr-service" style="display:none">
+            <td>Port</td>
+            <td><input id="txtPort" type="text" class="form-control" /></td>
+        </tr>
+        <tr class="tr-telnet tr-service" style="display:none">
+            <td>PortName</td>
+            <td><input id="txtPortName" type="text" class="form-control" /></td>
+        </tr>
+        <tr class="tr-page tr-service" style="display:none">
+            <td>Url</td>
+            <td><input id="txtUrl" type="text" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Sn</td>
+            <td><input id="txtTimer" type="number" min="1" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Sıra</td>
+            <td><input id="txtOrder" type="number" value="0" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Aktif</td>
+            <td>
+                <select id="ddlActive" class="form-control">
+                    <option value="true">Evet</option>
+                    <option value="false">Hayır</option>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan=2>
+                <button type="button" class="btn btn-primary" onclick="btnSaveOnClick()">Kaydet</button>
+                <button type="button" class="btn btn-danger" onclick="btnCancelOnClick()">İptal</button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<table class="tbl table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ad</th>
+            <th style="width:10%">tip</th>
+            <th style="width:30%">servis</th>
+            <th style="width:10%">sn</th>
+            <th style="width:10%">Güncelle</th>
+            <th style="width:10%">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+

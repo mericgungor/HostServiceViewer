@@ -12,6 +12,7 @@ namespace MvcWebApp
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -36,6 +37,7 @@ namespace MvcWebApp
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -47,6 +49,7 @@ namespace MvcWebApp
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                    //pattern: "{controller=Admin}/{action=Index}/{id?}");
             });
         }
     }

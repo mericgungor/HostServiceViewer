@@ -39,8 +39,8 @@ namespace Business
                 //    result = false;
                 //}
                 //------------------- 2. Yol -------------------------------
-                try
-                {
+                //try
+                //{
                     //socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                     socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.DontLinger, false);
 
@@ -49,33 +49,41 @@ namespace Business
                     bool success = sResult.AsyncWaitHandle.WaitOne(1000, true);
 
                     return socket.Connected;
-                }
-                catch
-                {
-                    return false;
-                }
-                finally
-                {
-                    if (null != socket)
-                        socket.Close();
-                }
+                //}
+                //catch
+                //{
+                //    return false;
+                //}
+                //finally
+                //{
+                //    if (null != socket)
+                //        socket.Close();
+                //}
             }
         }
         public bool Page(string url)
         {
 
-            WebRequest request = WebRequest.Create(url);
-            using (WebResponse response = request.GetResponse())
+            try
             {
-                var statusCode = ((HttpWebResponse)response).StatusCode;
-                if (statusCode == HttpStatusCode.OK)
+                WebRequest request = WebRequest.Create(url);
+                using (WebResponse response = request.GetResponse())
                 {
-                    return true;
+                    var statusCode = ((HttpWebResponse)response).StatusCode;
+                    if (statusCode == HttpStatusCode.OK)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+            }
+            catch
+            {
+
+                return false;
             }
         }
     }

@@ -14,6 +14,8 @@ namespace WebApi
 {
     public class Startup
     {
+        readonly string ApiCorsPolicy = "_apiCorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -24,6 +26,16 @@ namespace WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy(ApiCorsPolicy, builder =>
+            {
+                builder
+                .WithOrigins("http://localhost")
+                .AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin();
+                //.AllowAnyMethod()
+                //.AllowAnyHeader()
+                //.AllowCredentials();
+            }));
+
             services.AddControllers();
         }
 
@@ -34,6 +46,8 @@ namespace WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(ApiCorsPolicy);
 
             app.UseRouting();
 
