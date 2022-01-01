@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
    mongodb:
-     image: mongo
+     image: mericgungor/host-service-viewer-mongodb:22.01.01.1830
      container_name: mongodb
      ports:
         - 27017:27017
@@ -25,7 +25,7 @@ services:
         - mongonet
 
   
-   MvcWebApp:
+   mvcwebapp:
     image: ${DOCKER_REGISTRY-}mvcwebapp
     container_name: mvcwebapp
     depends_on:

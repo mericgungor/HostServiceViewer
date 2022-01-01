@@ -22,7 +22,12 @@ namespace WebApi.Controllers
             _mongoDbManager = new MongoDbManager();
         }
 
+        [HttpGet("test")]
+        public IActionResult Test()
+        {
+            return TrueResult("devam");
 
+        }
         [HttpGet("ping")]
         public IActionResult Ping(string ip)
         {

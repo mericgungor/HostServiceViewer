@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
    mongodb:
-     image: mericgungor/host-service-viewer-mongodb:21.12.31.1915
+     image: mericgungor/host-service-viewer-mongodb:22.01.01.1830
      container_name: mongodb
      restart: always
      ports:
@@ -13,7 +13,7 @@ services:
         - mongonet
   
    webapi:
-    image: mericgungor/host-service-viewer-webapi:21.12.31.1915
+    image: mericgungor/host-service-viewer-webapi:22.01.01.1915
     container_name: webapi
     restart: always
     depends_on:
@@ -25,7 +25,7 @@ services:
 
   
    mvcwebapp:
-    image: mericgungor/host-service-viewer-mvcwebapp:21.12.31.2015
+    image: mericgungor/host-service-viewer-mvcwebapp:22.01.01.1930
     container_name: mvcwebapp
     restart: always
     depends_on:
